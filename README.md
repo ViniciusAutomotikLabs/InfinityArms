@@ -21,7 +21,7 @@ Abra [http://localhost:3000](http://localhost:3000).
 
 ## API para o n8n (tabela do bot)
 
-Base URL (após o deploy): `https://SEU-DOMINIO.vercel.app`
+Base URL (produção): `https://bot-firearms.vercel.app`
 
 | Método | Endpoint | Uso |
 |--------|----------|-----|
