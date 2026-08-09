@@ -18,12 +18,12 @@ export default function ClubePage() {
         description="Treine, filie-se e resolva a compra no mesmo lugar — o diferencial InfinityArms."
       />
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="relative aspect-[21/9] overflow-hidden border border-white/10">
+        <div className="relative aspect-[21/9] overflow-hidden border border-white/10 bg-[#f4f2ee]">
           <Image
-            src="/catalog/permitidas/page-0010.jpg"
+            src="/catalog/oficial/revolver-taurus-889-4.png"
             alt="Estrutura do clube"
             fill
-            className="object-cover"
+            className="object-contain object-center p-6"
             sizes="100vw"
           />
         </div>

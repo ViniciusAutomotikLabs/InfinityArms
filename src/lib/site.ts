@@ -3,8 +3,9 @@ export const siteConfig = {
   tagline: "Loja de armas e clube de tiro em um só lugar",
   description:
     "Site demonstrativo InfinityArms — catálogo de armas de uso permitido e restrito, orientação CAC e atendimento via Mira no WhatsApp.",
-  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP || "5561999990000",
-  whatsappDisplay: process.env.NEXT_PUBLIC_WHATSAPP_DISPLAY || "(61) 99999-0000",
+  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP || "5521992596159",
+  whatsappDisplay:
+    process.env.NEXT_PUBLIC_WHATSAPP_DISPLAY || "(21) 99259-6159",
   email: "contato@infinityarms.demo",
   cnpj: "00.000.000/0001-00",
   address: "Quadra Demo, Lote 1, Loja 1 — Setor Sul — Brasília/DF",

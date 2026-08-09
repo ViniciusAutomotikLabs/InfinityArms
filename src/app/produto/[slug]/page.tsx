@@ -17,7 +17,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!product) return { title: "Produto" };
   return {
     title: product.nome,
-    description: `${product.nome} — ${product.calibre} · ${formatBRL(product.preco)}`,
+    description:
+      product.descricao ||
+      `${product.nome} — ${product.calibre} · ${formatBRL(product.preco)}`,
   };
 }
 
@@ -30,6 +32,7 @@ export default async function ProductPage({ params }: Props) {
     "@context": "https://schema.org",
     "@type": "Product",
     name: product.nome,
+    description: product.descricao,
     brand: product.marca,
     image: product.imagem_url,
     sku: product.id,
@@ -51,7 +54,7 @@ export default async function ProductPage({ params }: Props) {
     ["Peso", product.peso],
     ["Acabamento", product.acabamento],
     ["Tipo", product.tipo],
-    ["Requisito", product.requisito_categoria],
+    ["Requisitos", product.requisito_categoria],
   ];
 
   return (
@@ -62,12 +65,12 @@ export default async function ProductPage({ params }: Props) {
       />
       <LegalBanner />
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-2">
-        <div className="relative aspect-[4/3] overflow-hidden border border-white/10 bg-navy-900">
+        <div className="relative aspect-[4/3] overflow-hidden border border-white/10 bg-[#f4f2ee]">
           <Image
             src={product.imagem_url}
             alt={product.nome}
             fill
-            className="object-cover"
+            className="object-contain object-center p-6 sm:p-8"
             sizes="(max-width: 1024px) 100vw, 50vw"
             priority
           />
@@ -81,6 +84,9 @@ export default async function ProductPage({ params }: Props) {
           <h1 className="mt-3 font-display text-4xl text-white sm:text-5xl">
             {product.nome}
           </h1>
+          <p className="mt-5 text-base leading-relaxed text-steel-light">
+            {product.descricao}
+          </p>
           <p className="mt-6 font-display text-3xl text-gold">
             {formatBRL(product.preco)}
           </p>
@@ -89,10 +95,15 @@ export default async function ProductPage({ params }: Props) {
             {product.disponivel ? "Disponível para consulta" : "Indisponível"}
           </p>
 
-          {product.categoria_uso === "restrito" && (
+          {product.categoria_uso === "restrito" ? (
             <p className="mt-4 border border-red-800/50 bg-red-950/40 px-4 py-3 text-sm text-red-100">
-              Produto restrito — exige categoria compatível no CR (
-              {product.requisito_categoria}).
+              Produto restrito — aquisição para{" "}
+              {product.requisito_categoria}.
+            </p>
+          ) : (
+            <p className="mt-4 border border-gold/30 bg-navy-900/80 px-4 py-3 text-sm text-steel-light">
+              Uso permitido — pode ser adquirida para{" "}
+              {product.requisito_categoria}.
             </p>
           )}
 
@@ -112,7 +123,12 @@ export default async function ProductPage({ params }: Props) {
           <h2 className="font-display text-2xl text-gold">Ficha técnica</h2>
           <dl className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {specs.map(([label, value]) => (
-              <div key={label} className="border border-white/10 bg-navy-950/50 p-4">
+              <div
+                key={label}
+                className={`border border-white/10 bg-navy-950/50 p-4 ${
+                  label === "Requisitos" ? "sm:col-span-2 lg:col-span-4" : ""
+                }`}
+              >
                 <dt className="text-[11px] uppercase tracking-wider text-steel">
                   {label}
                 </dt>

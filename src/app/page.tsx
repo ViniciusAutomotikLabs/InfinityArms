@@ -14,11 +14,11 @@ export default function HomePage() {
     <>
       <section className="relative min-h-[88vh] overflow-hidden">
         <Image
-          src="/catalog/permitidas/page-0001.jpg"
+          src="/catalog/oficial/pistola-taurus-gx4-carry-graphene.png"
           alt="Catálogo InfinityArms"
           fill
           priority
-          className="object-cover object-center"
+          className="object-contain object-right bg-navy-950 p-8 sm:p-16"
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-950/85 to-navy-950/40" />
@@ -139,12 +139,12 @@ export default function HomePage() {
               <WhatsAppCTA />
             </div>
           </div>
-          <div className="relative aspect-[4/3] overflow-hidden border border-white/10">
+          <div className="relative aspect-[4/3] overflow-hidden border border-white/10 bg-[#f4f2ee]">
             <Image
-              src="/catalog/permitidas/page-0010.jpg"
+              src="/catalog/oficial/carabina-rossi-lever-action-24-inox.png"
               alt="Clube de tiro InfinityArms"
               fill
-              className="object-cover"
+              className="object-contain object-center p-8"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </div>

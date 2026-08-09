@@ -9,12 +9,12 @@ export function ProductCard({ product }: { product: Product }) {
       href={product.url_produto}
       className="group flex flex-col overflow-hidden border border-white/10 bg-navy-900/60 transition hover:border-gold/40 hover:bg-navy-800/80"
     >
-      <div className="relative aspect-[4/3] overflow-hidden bg-navy-950">
+      <div className="relative aspect-[4/3] overflow-hidden bg-[#f4f2ee]">
         <Image
           src={product.imagem_url}
           alt={product.nome}
           fill
-          className="object-cover object-center transition duration-500 group-hover:scale-[1.03]"
+          className="object-contain object-center p-4 transition duration-500 group-hover:scale-[1.03]"
           sizes="(max-width: 768px) 100vw, 33vw"
         />
         <span
@@ -34,6 +34,9 @@ export function ProductCard({ product }: { product: Product }) {
         <h3 className="mt-2 font-display text-lg leading-snug text-white group-hover:text-gold">
           {product.nome}
         </h3>
+        <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-steel">
+          {product.descricao}
+        </p>
         <p className="mt-auto pt-4 font-display text-xl text-gold">
           {formatBRL(product.preco)}
         </p>

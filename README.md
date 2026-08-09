@@ -21,13 +21,15 @@ Abra [http://localhost:3000](http://localhost:3000).
 
 ## API para o n8n (tabela do bot)
 
+Documentação completa: [`docs/API.md`](docs/API.md)
+
 Base URL (produção): `https://bot-firearms.vercel.app`
 
 | Método | Endpoint | Uso |
 |--------|----------|-----|
 | `GET` | `/api/products` | Lista completa (JSON) |
 | `GET` | `/api/products?categoria=permitido` | Filtra permitido/restrito |
-| `GET` | `/api/products?q=G2C` | Busca por nome/calibre/marca |
+| `GET` | `/api/products?q=TH380` | Busca por nome/calibre/marca |
 | `GET` | `/api/products/[id]` | Produto por `id` ou `slug` |
 | `GET` | `/api/products.csv` | Export CSV (planilha) |
 
@@ -36,25 +38,29 @@ Base URL (produção): `https://bot-firearms.vercel.app`
 ```json
 {
   "source": "infinityarms-demo",
-  "count": 51,
+  "updated_at": "2026-catalog-v2",
+  "count": 10,
   "products": [
     {
-      "id": "perm-g2c-38tpc-preta",
-      "nome": "Pistola Taurus G2C 38TPC Preta",
+      "id": "perm-th380",
+      "nome": "Pistola Taurus TH380",
       "categoria_uso": "permitido",
       "tipo": "pistola",
       "marca": "Taurus",
-      "calibre": ".38 TPC",
-      "preco": 4600,
-      "preco_parcelado": "12x de R$ 435,00",
+      "calibre": ".380 ACP",
+      "preco": 7390,
+      "preco_parcelado": "12x de R$ 615,83",
       "disponivel": true,
-      "requisito_categoria": "nenhum",
-      "url_produto": "/produto/pistola-taurus-g2c-38tpc-preta",
-      "imagem_url": "/catalog/permitidas/page-0001.jpg"
+      "requisito_categoria": "atirador nível 1 (tiro desportivo), caçador, posse ou porte",
+      "url_produto": "/produto/pistola-taurus-th380",
+      "imagem_url": "/catalog/oficial/pistola-taurus-th380.jpg",
+      "descricao": "Pistola com teclas 100% ambidestras e alta capacidade de disparos (18 tiros)..."
     }
   ]
 }
 ```
+
+Regenerar catálogo + fotos oficiais: `npm run import:catalog`
 
 ### Nó HTTP Request no n8n
 
@@ -68,8 +74,8 @@ Para importar no Google Sheets depois: baixe `/api/products.csv` e importe a pla
 
 Copie `.env.example` → `.env.local`:
 
-- `NEXT_PUBLIC_WHATSAPP` — número internacional sem `+` (ex.: `5561999990000`)
-- `NEXT_PUBLIC_WHATSAPP_DISPLAY` — exibição amigável
+- `NEXT_PUBLIC_WHATSAPP` — número internacional sem `+` (ex.: `5521992596159`)
+- `NEXT_PUBLIC_WHATSAPP_DISPLAY` — exibição amigável (ex.: `(21) 99259-6159`)
 - `NEXT_PUBLIC_SITE_URL` — URL canônica (sitemap)
 
 ## Páginas

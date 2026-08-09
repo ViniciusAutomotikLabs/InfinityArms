@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { ContentSection, PageHero } from "@/components/PageHero";
 import { WhatsAppCTA } from "@/components/WhatsAppCTA";
 
@@ -7,10 +8,30 @@ export const metadata: Metadata = {
   description: "Perguntas frequentes sobre compra de armas, CAC e atendimento.",
 };
 
-const faqs = [
+const faqs: { q: string; a: ReactNode }[] = [
   {
     q: "Qual a idade mínima?",
-    a: "A aquisição de armas de fogo é restrita a maiores de 18 anos, observadas as demais exigências legais e de categoria.",
+    a: (
+      <>
+        Duas idades diferentes entram em jogo. Aos{" "}
+        <strong className="font-semibold text-white">18 anos</strong> já é
+        possível obter o CR e praticar tiro desportivo com armas do clube ou de
+        outros atletas. Já a{" "}
+        <strong className="font-semibold text-white">compra</strong> de arma de
+        fogo própria só é permitida a partir dos{" "}
+        <strong className="font-semibold text-white">25 anos</strong>, nos termos
+        da{" "}
+        <a
+          href="https://www.planalto.gov.br/ccivil_03/leis/2003/l10.826.htm"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gold underline decoration-gold/40 underline-offset-2 transition hover:text-gold-light"
+        >
+          Lei nº 10.826/2003
+        </a>
+        .
+      </>
+    ),
   },
   {
     q: "Posso comprar 100% online?",
@@ -48,9 +69,9 @@ export default function FaqPage() {
               <summary className="cursor-pointer list-none px-5 py-4 font-display text-xl text-white marker:content-none">
                 {item.q}
               </summary>
-              <p className="border-t border-white/5 px-5 py-4 text-sm leading-relaxed text-steel">
+              <div className="border-t border-white/5 px-5 py-4 text-sm leading-relaxed text-steel">
                 {item.a}
-              </p>
+              </div>
             </details>
           ))}
         </div>

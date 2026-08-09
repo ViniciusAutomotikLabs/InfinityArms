@@ -12,7 +12,7 @@ export async function GET(request: NextRequest) {
 
   return NextResponse.json({
     source: "infinityarms-demo",
-    updated_at: "2024-catalog-demo",
+    updated_at: "2026-catalog-v2",
     count: items.length,
     products: items,
   });

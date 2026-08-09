@@ -27,4 +27,6 @@ export interface Product {
   acao: string;
   peso: string;
   acabamento: string;
+  /** Texto comercial / descrição de venda */
+  descricao: string;
 }

@@ -45,7 +45,7 @@ export function searchProducts(opts: {
   if (opts.q) {
     const q = opts.q.toLowerCase().trim();
     result = result.filter((p) =>
-      [p.nome, p.marca, p.calibre, p.tipo, p.id, p.slug]
+      [p.nome, p.marca, p.calibre, p.tipo, p.id, p.slug, p.descricao]
         .join(" ")
         .toLowerCase()
         .includes(q)
@@ -74,6 +74,7 @@ export function productsToCsv(items: Product[]): string {
     "acao",
     "peso",
     "acabamento",
+    "descricao",
   ] as const;
 
   const escape = (value: string | number | boolean) => {
